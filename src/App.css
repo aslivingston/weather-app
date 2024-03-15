@@ -1,0 +1,9 @@
+.weather-card {
+  border: 1px solid #000;
+  padding: 2vw;
+}
+
+.daily-card {
+  display: flex;
+  gap: 2vw;
+}

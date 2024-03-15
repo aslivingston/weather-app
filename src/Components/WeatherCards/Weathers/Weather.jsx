@@ -1,46 +1,86 @@
 function getWeatherDescription(code) {
     switch (code) {
         case 0:
-            return "Clear sky";
+            return {
+                description: "Clear sky",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/sun-128.png?raw=true"
+            };
         case 1:
         case 2:
         case 3:
-            return "Mainly clear, partly cloudy, and overcast";
+            return {
+                description: "Mainly clear, partly cloudy, and overcast",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/partly-cloudy-day-128.png?raw=true"
+            };
         case 45:
         case 48:
-            return "Fog and depositing rime fog";
+            return {
+                description: "Fog and depositing rime fog",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/fog-day-128.png?raw=true"
+            };
         case 51:
         case 53:
         case 55:
-            return "Drizzle: Light, moderate, and dense intensity";
+            return {
+                description: "Drizzle: Light, moderate, and dense intensity",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/little-rain-128.png?raw=true"
+            };
         case 56:
         case 57:
-            return "Freezing Drizzle: Light and dense intensity";
+            return {
+                description: "Freezing Drizzle: Light and dense intensity",
+                image: ""
+            };
         case 61:
         case 63:
         case 65:
-            return "Rain: Slight, moderate and heavy intensity";
+            return {
+                description: "Rain: Slight, moderate and heavy intensity",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true",
+                bgColour: "#82dcff"
+            };
         case 66:
         case 67:
-            return "Freezing Rain: Light and heavy intensity";
+            return {
+                description: "Freezing Rain: Light and heavy intensity",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/sleet-128.png?raw=true"
+            };
         case 71:
         case 73:
         case 75:
-            return "Snow fall: Slight, moderate, and heavy intensity";
+            return {
+                description: "Snow fall: Slight, moderate, and heavy intensity",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/little-snow-128.png?raw=true"
+            };
         case 77:
-            return "Snow grains";
+            return {
+                description: "Snow grains",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/snow-128.png?raw=true"
+            };
         case 80:
         case 81:
         case 82:
-            return "Rain showers: Slight, moderate, and violent";
+            return {
+                description: "Rain showers: Slight, moderate, and violent",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true"
+            };
         case 85:
         case 86:
-            return "Snow showers slight and heavy";
+            return {
+                description: "Snow showers slight and heavy",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/snow-storm-128.png?raw=true"
+            };
         case 95:
-            return "Thunderstorm: Slight or moderate";
+            return {
+                description: "Thunderstorm: Slight or moderate",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/storm-128.png?raw=true"
+            };
         case 96:
         case 99:
-            return "Thunderstorm with slight and heavy hail";
+            return {
+                description: "Thunderstorm with slight and heavy hail",
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/cloud-lighting-128.png?raw=true"
+            };
         default:
             return "Unknown weather code";
     }
@@ -48,10 +88,10 @@ function getWeatherDescription(code) {
 
 
 function Weather({ date, maxTemp, minTemp, weatherCode }) {
-    const description = getWeatherDescription(weatherCode);
+    const {description, image, bgColour} = getWeatherDescription(weatherCode);
 
     return (
-        <div>
+        <div className="weather-card" style={{ backgroundColor: bgColour }}>
             <div>
                 {date}
             </div>
@@ -64,6 +104,7 @@ function Weather({ date, maxTemp, minTemp, weatherCode }) {
             <div>
                 {description}
             </div>
+            <img src={image} alt={description} />
             <br></br>
         </div>
     );

@@ -23,7 +23,7 @@ function WeatherCard() {
             <h1>Weather</h1>
             <h2>Below is the weather for the next 7 days in London</h2>
             {weatherData && (
-            <ul>
+            <p className="daily-card">
              {weatherData.time.map((date, index) => (
                 <Weather
                     key={index}
@@ -33,7 +33,7 @@ function WeatherCard() {
                     weatherCode={weatherData.weather_code[index]}
                 />
                 ))}
-             </ul>
+             </p>
             )}
       </div>
 

@@ -5,8 +5,9 @@ function App() {
 
   return (
     <>
-    
-    <WeatherCard></WeatherCard>
+      <div>
+        <WeatherCard></WeatherCard>
+      </div> 
 
     </>
   )
