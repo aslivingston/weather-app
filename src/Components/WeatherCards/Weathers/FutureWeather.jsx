@@ -3,7 +3,8 @@ function getWeatherDescription(code) {
         case 0:
             return {
                 description: "Clear sky",
-                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/sun-128.png?raw=true"
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/sun-128.png?raw=true",
+                bgColour: "#f8fc03"
             };
         case 1:
             return {
@@ -54,17 +55,20 @@ function getWeatherDescription(code) {
         case 61:
             return {
                 description: "Rain: Slight intensity",
-                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true"
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true",
+                bgColour: "#82dcff"
             };
         case 63:
             return {
                 description: "Rain: Moderate intensity",
-                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true"
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true",
+                bgColour: "#82dcff"
             };
         case 65:
             return {
                 description: "Rain: Heavy intensity",
-                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true"
+                image: "https://github.com/aslivingston/weather-app/blob/main/src/assets/rain-128.png?raw=true",
+                bgColour: "#82dcff"
             };
         case 66:
             return {
@@ -142,29 +146,26 @@ function getWeatherDescription(code) {
 }
 
 
-function Weather({ maxTemp, minTemp, weatherCode }) {
+function FutureWeather({ date, maxTemp, minTemp, weatherCode }) {
     const {description, image} = getWeatherDescription(weatherCode);
     const avgTemp = Math.round(maxTemp + minTemp) / 2;
+    const formattedDay = new Date(date).toLocaleDateString('en-GB', {
+        weekday: 'long'
+    });
 
     return (
-        <div>
-            <div className="today">
-                Today
-            </div>
-            <div className="current-container">
-                <div className="current-content">
-                    <img className="current" src={image} alt={description} />
-                    <h2>{avgTemp}°C</h2>
-                </div>
-                <div>
-                    {minTemp} - {maxTemp}°C
-                </div>
-                <div>
-                    {description}
+        <div className="future-weather-card" >
+            <div className="future-flex">
+                <div className="">
+                {formattedDay}
+                </div> 
+                <div className="avg-temp-container">
+                    {avgTemp} °C
+                    <img className="future" src={image} alt={description} />
                 </div>
             </div>
         </div>
     );
 }
 
-export default Weather;
+export default FutureWeather;
