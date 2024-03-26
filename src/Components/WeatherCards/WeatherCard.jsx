@@ -95,13 +95,13 @@ function WeatherCard() {
                 return '#89C1F5'; // Drizzle / rain
             case 66:
             case 67:
+            case 71:
+            case 73:
+            case 75:
             case 77:
             case 85:
             case 86:
                 return '#F2EAE4'; // Snow / sleet
-            case 71:
-            case 73:
-            case 75:
             case 80:
             case 81:
             case 82:
